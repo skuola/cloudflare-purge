@@ -18,8 +18,7 @@ import requests
 from colorama import init, Fore, Style
 
 cfZone = ''
-cfAuthEmail = ''
-cfAuthKey = ''
+cfToken = ''
 cfUrl = 'https://api.cloudflare.com/client/v4/zones/' + cfZone + '/purge_cache'
 
 
@@ -32,9 +31,9 @@ def main(argv):
     mode = 'single'
     urls = ''
 
-    if cfZone == '' or cfAuthEmail == '' or cfAuthKey == '':
+    if cfZone == '' or cfToken == '':
         print(
-            Fore.YELLOW + "Please populate cfZone, cfAuthEmail and cfAuthKey variables with your Cloudflare API "
+            Fore.YELLOW + "Please populate cfZone and cfToken variables with your Cloudflare API "
                           "credentials" + Style.RESET_ALL)
         sys.exit(1)
 
@@ -56,7 +55,7 @@ def main(argv):
         print(help_string)
         sys.exit(1)
 
-    headers = {'X-Auth-Email': cfAuthEmail, 'X-Auth-Key': cfAuthKey, 'Content-Type': 'application/json'}
+    headers = {'Authorization': 'Bearer ' + cfToken, 'Content-Type': 'application/json'}
     list_urls = urls.split(',')
 
     if mode == "bulk":
