@@ -8,7 +8,7 @@ Script to purge Cloudflare cache for the specified urls
 
 ## API key
 Create your API token here: https://dash.cloudflare.com/profile/api-tokens  
-then assign the correct values for `cfZone`, `cfAuthEmail` and `cfAuthKey` variables in the python script  
+then assign the correct values for `cfZone` and `cfToken` variables in the python script  
 
 ## USAGE
 ```bash
